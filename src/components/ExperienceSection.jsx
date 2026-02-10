@@ -8,7 +8,8 @@ const ExperienceSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="min-h-screen bg-[#050505] py-32 px-8 relative overflow-hidden flex items-center">
+    // UPDATE: py-20 px-4 (mobile) -> py-32 px-8 (desktop)
+    <section ref={ref} className="min-h-screen bg-[#050505] py-20 px-4 md:py-32 md:px-8 relative overflow-hidden flex items-center">
       <div className="max-w-7xl mx-auto relative z-10 w-full">
 
         {/* Header */}
@@ -16,13 +17,15 @@ const ExperienceSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="mb-20 max-w-6xl mx-auto flex items-end justify-between border-b border-white/10 pb-8"
+          // UPDATE: mb-12 (mobile) -> mb-20 (desktop), flex-col (mobile) -> flex-row (desktop)
+          className="mb-12 md:mb-20 max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-end justify-between gap-6 md:gap-0 border-b border-white/10 pb-8"
         >
           <div>
             <span className="text-xs font-mono text-neutral-500 mb-4 block tracking-widest uppercase">
               // 04 — Career Path
             </span>
-            <h2 className="text-5xl md:text-7xl font-light tracking-tighter text-white">
+            {/* UPDATE: text-4xl (mobile) -> text-7xl (desktop) agar tidak pecah di layar kecil */}
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-light tracking-tighter text-white">
               Professional <span className="text-neutral-600">Journey.</span>
             </h2>
           </div>
@@ -37,7 +40,8 @@ const ExperienceSection = () => {
         </motion.div>
 
         {/* The Manifest List */}
-        <div className="flex flex-col px-16">
+        {/* UPDATE: px-0 (mobile) -> px-16 (desktop). Padding 16 (64px) terlalu besar untuk mobile */}
+        <div className="flex flex-col px-0 md:px-16">
           {experiencesData.map((exp, i) => {
             const isActive = activeExp === i;
 
@@ -51,7 +55,8 @@ const ExperienceSection = () => {
                 className={`group border-b border-white/10 cursor-pointer transition-colors duration-500 ${isActive ? 'bg-white/[0.02]' : 'hover:bg-white/[0.01]'
                   }`}
               >
-                <div className="py-8 md:py-10 px-2 md:px-6 grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+                {/* UPDATE: py-6 (mobile) -> py-10 (desktop), gap-4 (mobile) -> gap-6 (desktop) */}
+                <div className="py-6 md:py-10 px-2 md:px-6 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-start">
 
                   {/* Column 1: Period & Status */}
                   <div className="md:col-span-3 flex flex-row md:flex-col justify-between md:justify-start gap-2">
@@ -62,7 +67,7 @@ const ExperienceSection = () => {
 
                     {/* Live Indicator if "Present" */}
                     {exp.period.includes('Present') && (
-                      <div className="flex items-center gap-2 mt-1">
+                      <div className="flex items-center gap-2 mt-0 md:mt-1">
                         <span className="relative flex h-2 w-2">
                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                           <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
@@ -75,11 +80,14 @@ const ExperienceSection = () => {
                   {/* Column 2: Role & Company */}
                   <div className="md:col-span-9">
                     <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-4">
-                      <h3 className={`text-3xl md:text-4xl font-light transition-colors duration-300 ${isActive ? 'text-white' : 'text-neutral-400 group-hover:text-white'
+                      {/* UPDATE: text-2xl (mobile) -> text-4xl (desktop) */}
+                      <h3 className={`text-2xl md:text-4xl font-light transition-colors duration-300 ${isActive ? 'text-white' : 'text-neutral-400 group-hover:text-white'
                         }`}>
                         {exp.role}
                       </h3>
-                      <div className="flex items-center gap-3">
+                      
+                      {/* UPDATE: flex-wrap agar tidak overflow jika nama company panjang di mobile */}
+                      <div className="flex flex-wrap items-center gap-2 md:gap-3">
                         <span className="text-sm md:text-lg text-neutral-500">{exp.company}</span>
                         <span className="text-neutral-700 hidden md:block">/</span>
                         <span className="text-xs font-mono text-neutral-600 uppercase tracking-wider">{exp.location}</span>

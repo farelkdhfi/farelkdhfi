@@ -1,5 +1,13 @@
 import { image } from 'framer-motion/client';
 import Tees from '../assets/projectsImg/Tees.png';
+import Fit from '../assets/projectsImg/fitCompetition.jpeg';
+import Magessa from '../assets/projectsImg/magessa.jpeg';
+import SkinAI from '../assets/projectsImg/skinAI.png';
+import HandVirtual from '../assets/projectsImg/handVirtual.jpeg';
+import DesaKit from '../assets/projectsImg/desaKit.png';
+import TasteAI from '../assets/projectsImg/tasteAI.png';
+import JavascriptBooks from '../assets/projectsImg/javascriptBooks.png';
+import TaskFlow from '../assets/projectsImg/taskFlow.png';
 
 export const personalData = [
     { label: 'System Status', value: 'Online', color: 'text-green-500' },
@@ -27,7 +35,8 @@ export const projectsData = [
         year: "2024",
         desc: "Facial skin analysis web app integrating MobileNetV2 for classification and MediaPipe Tasks Vision for real-time detection.",
         tech: ["React.js", "TensorFlow.js", "MediaPipe", "Python"],
-        image: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=2070",
+        image: SkinAI,
+        url: "https://skinai-two.vercel.app/",
         metrics: { accuracy: "92%", classes: "3 Types", latency: "<200ms" }
     },
     {
@@ -37,7 +46,8 @@ export const projectsData = [
         year: "2023",
         desc: "Mail management system featuring 5-level RBAC (Admin to Staff), digital disposition flow, and QR Code guestbook.",
         tech: ["Laravel", "React", "MySQL", "QR Code"],
-        image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2074",
+        image: Magessa,
+        url: "https://magessa.vercel.app//",
         metrics: { roles: "5 Levels", users: "50+", efficiency: "+80%" }
     },
     {
@@ -47,7 +57,8 @@ export const projectsData = [
         year: "2024",
         desc: "Award-winning dashboard integrating public services, data visualization, and civic reporting. Juara Harapan 2 FIT Competition.",
         tech: ["React.js", "Leaflet Maps", "Chart.js", "API"],
-        image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=2070",
+        image: Fit,
+        url: "https://tasikmalaya-smart-city.vercel.app/",
         metrics: { rank: "Top 5", features: "12+", uptime: "99%" }
     },
     {
@@ -57,60 +68,61 @@ export const projectsData = [
         year: "2024",
         desc: "Gesture-controlled virtual robotic arm simulation utilizing hand tracking to manipulate 3D objects in real-time.",
         tech: ["Three.js", "MediaPipe", "React-Three-Fiber", "WebGL"],
-        image: Tees,
+        image: HandVirtual,
+        url: "https://hand-robot-virtual-3d.vercel.app/",
         metrics: { fps: "60", latency: "15ms", joints: "12+" }
     }
 ];
 
 export const additionalProjects = [
     {
-        title: "Desa Cibuniasih",
-        image: Tees,
+        title: "Photo Booth App",
+        image: Tees, // Pastikan variabel image sesuai import
         year: "2023",
-        desc: "Comprehensive Village Portfolio Website created during KKN to digitalize local demographics and potential.",
-        tech: ["Web Design", "CMS", "SEO"],
-        url: "https://tees-lombawdc.vercel.app/"
+        desc: "Interactive web-based photo booth application allowing users to capture moments with custom frames and filters directly from the browser.",
+        tech: ["ReactJS (Vite)", "TailwindCSS", "Three.js"],
+        url: "https://photo-booth-app-sigma.vercel.app/"
     },
     {
-        title: "TEES Project",
-        image: Tees,
+        title: "Task Flow App",
+        image: TaskFlow,
         year: "2025",
-        desc: "Frontend-only landing page submission for WDC Competition 2025. Focused on advanced CSS and layouting.",
-        tech: ["HTML5", "CSS3", "JavaScript"],
-        url: "https://tees-lombawdc.vercel.app/"
+        desc: "A streamlined productivity application designed to manage tasks and enhance workflow efficiency with a modern, intuitive interface.",
+        tech: ["ReactJS (Vite)", "TailwindCSS", "Three.js"],
+        url: "https://task-flow-pink-omega.vercel.app/"
     },
     {
-        title: "TEES Project",
-        image: Tees,
+        title: "Food and Recipe Recomendation",
+        image: TasteAI,
         year: "2025",
-        desc: "Frontend-only landing page submission for WDC Competition 2025. Focused on advanced CSS and layouting.",
-        tech: ["HTML5", "CSS3", "JavaScript"],
-        url: "https://tees-lombawdc.vercel.app/"
+        desc: "AI-powered culinary assistant (TASTE-AI) that provides personalized food and recipe recommendations using the Groq AI model.",
+        tech: ["ReactJS (Vite)", "TailwindCSS", "Three.js"],
+        url: "https://tasteai-recipe-assistant.vercel.app/"
     },
     {
-        title: "TEES Project",
-        image: Tees,
+        title: "Javascript Books",
+        image: JavascriptBooks,
         year: "2025",
-        desc: "Frontend-only landing page submission for WDC Competition 2025. Focused on advanced CSS and layouting.",
-        tech: ["HTML5", "CSS3", "JavaScript"],
-        url: "https://tees-lombawdc.vercel.app/"
+        desc: "A curated digital library and documentation platform built to track and showcase my personal journey in mastering JavaScript.",
+        tech: ["ReactJS (Vite)", "TailwindCSS", "Three.js"],
+        url: "https://javascript-books.vercel.app/"
     },
     {
-        title: "TEES Project",
-        image: Tees,
+        title: "Village Website Builder",
+        image: DesaKit,
         year: "2025",
-        desc: "Frontend-only landing page submission for WDC Competition 2025. Focused on advanced CSS and layouting.",
-        tech: ["HTML5", "CSS3", "JavaScript"],
-        url: "https://tees-lombawdc.vercel.app/"
+        desc: "DesaKit: A SaaS platform designed to simplify the creation of professional and functional websites for village administrations.",
+        tech: ["ReactJS (Vite)", "TailwindCSS", "Three.js"],
+        url: "https://desakit-app.vercel.app/"
     },
     {
-        title: "TEES Project",
+        title: "TEES E-Commerce",
         image: Tees,
         year: "2025",
-        desc: "Frontend-only landing page submission for WDC Competition 2025. Focused on advanced CSS and layouting.",
-        tech: ["HTML5", "CSS3", "JavaScript"],
+        desc: "A modern e-commerce landing page submission for WDC Competition, focused on delivering a seamless shopping experience for apparel.",
+        tech: ["ReactJS (Vite)", "TailwindCSS", "Three.js"],
         url: "https://tees-lombawdc.vercel.app/"
-    },
+    }
 ];
 
 export const experiencesData = [

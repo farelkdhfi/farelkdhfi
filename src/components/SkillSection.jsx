@@ -12,25 +12,27 @@ const SkillRow = ({ data, index, isHovered, isAnyHovered, onHover, isInView }) =
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: index * 0.05, duration: 0.5 }}
             onMouseEnter={onHover}
-            className={`relative group cursor-pointer border-b border-white/5 py-10 transition-all duration-500 ease-out ${isAnyHovered && !isHovered ? 'opacity-20 blur-[3px]' : 'opacity-100'
+            // UPDATE: py-6 untuk mobile, py-10 untuk desktop agar tidak terlalu renggang di HP
+            className={`relative group cursor-pointer border-b border-white/5 py-6 md:py-10 transition-all duration-500 ease-out ${isAnyHovered && !isHovered ? 'opacity-20 blur-[3px]' : 'opacity-100'
                 }`}
         >
             <div className="flex items-baseline justify-between relative z-10">
-                <div className="flex items-baseline gap-4 md:gap-12">
+                <div className="flex items-baseline gap-3 md:gap-12">
                     {/* Index Number */}
-                    <span className="font-mono text-xs text-neutral-600 w-8">
+                    <span className="font-mono text-[10px] md:text-xs text-neutral-600 w-6 md:w-8">
                         {String(index + 1).padStart(2, '0')}
                     </span>
 
                     {/* Skill Name */}
-                    <h3 className="text-lg font-light tracking-tight text-white transition-transform duration-500 group-hover:translate-x-4">
+                    {/* UPDATE: text-base untuk mobile, text-lg untuk desktop */}
+                    <h3 className="text-base md:text-lg font-light tracking-tight text-white transition-transform duration-500 group-hover:translate-x-2 md:group-hover:translate-x-4">
                         {data.name}
                     </h3>
                 </div>
 
                 {/* Right Side Info */}
                 <div className="flex flex-col items-end gap-1">
-                    <span className="text-xs font-mono uppercase tracking-wider text-neutral-500 group-hover:text-white transition-colors">
+                    <span className="text-[10px] md:text-xs font-mono uppercase tracking-wider text-neutral-500 group-hover:text-white transition-colors">
                         {data.category}
                     </span>
 
@@ -87,20 +89,23 @@ const SkillsSection = () => {
     const [hoveredSkill, setHoveredSkill] = useState(null);
 
     return (
-        <section ref={ref} className="min-h-screen bg-[#050505] py-32 px-8 relative overflow-hidden flex flex-col justify-center">
+        // UPDATE: py-20 px-4 (mobile) -> py-32 px-8 (desktop)
+        <section ref={ref} className="min-h-screen bg-[#050505] py-20 px-4 md:py-32 md:px-8 relative overflow-hidden flex flex-col justify-center">
             <div className="max-w-7xl mx-auto relative z-10 w-full">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="mb-24 max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-end gap-8 border-b border-white/10 pb-12"
+                    // UPDATE: mb-12 (mobile) -> mb-24 (desktop), layout stack di mobile
+                    className="mb-12 md:mb-24 max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-8 border-b border-white/10 pb-8 md:pb-12"
                 >
                     <div>
                         <span className="text-xs font-mono text-neutral-500 mb-4 block tracking-widest uppercase">
-              // 02 — Competencies
+                            // 02 — Competencies
                         </span>
-                        <h2 className="text-5xl md:text-7xl font-light tracking-tighter text-white">
+                        {/* UPDATE: text-4xl (mobile) -> text-7xl (desktop) */}
+                        <h2 className="text-4xl sm:text-5xl md:text-7xl font-light tracking-tighter text-white">
                             Technical<br />
                             <span className="text-neutral-600">Proficiency.</span>
                         </h2>
@@ -111,7 +116,12 @@ const SkillsSection = () => {
                 </motion.div>
 
                 {/* The Elegant List */}
-                <div className="grid grid-cols-2 gap-5 px-16" onMouseLeave={() => setHoveredSkill(null)}>
+                {/* UPDATE: 
+                    - grid-cols-1 (mobile) -> grid-cols-2 (desktop)
+                    - px-0 (mobile) -> px-16 (desktop)
+                    - gap-x-12 agar kolom terpisah jelas saat desktop
+                */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-2 md:gap-5 px-0 md:px-16" onMouseLeave={() => setHoveredSkill(null)}>
                     {skillsData.map((skill, i) => (
                         <SkillRow
                             key={skill.name}
@@ -128,4 +138,4 @@ const SkillsSection = () => {
         </section>
     );
 };
-export default SkillsSection
+export default SkillsSection;
