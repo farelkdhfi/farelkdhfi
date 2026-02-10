@@ -135,7 +135,7 @@ const ProjectsSection = () => {
                       </div>
 
                       {/* Metrics Grid */}
-                      <div className="grid grid-cols-3 gap-4 md:gap-6 pt-4 md:pt-6 border-t border-white/10">
+                      {/* <div className="grid grid-cols-3 gap-4 md:gap-6 pt-4 md:pt-6 border-t border-white/10">
                         {Object.entries(projectsData[activeProject].metrics).map(([key, value], idx) => (
                           <motion.div
                             key={key}
@@ -143,12 +143,11 @@ const ProjectsSection = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3 + (idx * 0.1) }}
                           >
-                            {/* UPDATE: text-xl (mobile) -> text-3xl (desktop) */}
                             <p className="text-xl md:text-3xl font-light text-white mb-1 tracking-tight">{value}</p>
                             <p className="text-[9px] md:text-[10px] text-neutral-500 uppercase tracking-widest">{key}</p>
                           </motion.div>
                         ))}
-                      </div>
+                      </div> */}
 
                       {/* PERUBAHAN 3: UI Hint untuk memberitahu user harus klik gambar */}
                       <motion.div 

@@ -8,6 +8,7 @@ import DesaKit from '../assets/projectsImg/desaKit.png';
 import TasteAI from '../assets/projectsImg/tasteAI.png';
 import JavascriptBooks from '../assets/projectsImg/javascriptBooks.png';
 import TaskFlow from '../assets/projectsImg/taskFlow.png';
+import PhotoBooth from '../assets/projectsImg/photoBooth.png';
 
 export const personalData = [
     { label: 'System Status', value: 'Online', color: 'text-green-500' },
@@ -32,7 +33,7 @@ export const projectsData = [
         id: 1,
         title: "SkinAI (Thesis)",
         category: "AI & Computer Vision",
-        year: "2024",
+        year: "2026",
         desc: "Facial skin analysis web app integrating MobileNetV2 for classification and MediaPipe Tasks Vision for real-time detection.",
         tech: ["React.js", "TensorFlow.js", "MediaPipe", "Python"],
         image: SkinAI,
@@ -43,9 +44,9 @@ export const projectsData = [
         id: 2,
         title: "Magessa (E-Office)",
         category: "Enterprise System",
-        year: "2023",
+        year: "2025",
         desc: "Mail management system featuring 5-level RBAC (Admin to Staff), digital disposition flow, and QR Code guestbook.",
-        tech: ["Laravel", "React", "MySQL", "QR Code"],
+        tech: ["React.js", "PostgreSQL", "Node.js & Express", "QR Code"],
         image: Magessa,
         url: "https://magessa.vercel.app//",
         metrics: { roles: "5 Levels", users: "50+", efficiency: "+80%" }
@@ -65,7 +66,7 @@ export const projectsData = [
         id: 4,
         title: "HandRobot 3D",
         category: "Creative Tech / IoT",
-        year: "2024",
+        year: "2025",
         desc: "Gesture-controlled virtual robotic arm simulation utilizing hand tracking to manipulate 3D objects in real-time.",
         tech: ["Three.js", "MediaPipe", "React-Three-Fiber", "WebGL"],
         image: HandVirtual,
@@ -77,7 +78,7 @@ export const projectsData = [
 export const additionalProjects = [
     {
         title: "Photo Booth App",
-        image: Tees, // Pastikan variabel image sesuai import
+        image: PhotoBooth,
         year: "2023",
         desc: "Interactive web-based photo booth application allowing users to capture moments with custom frames and filters directly from the browser.",
         tech: ["ReactJS (Vite)", "TailwindCSS", "Three.js"],
