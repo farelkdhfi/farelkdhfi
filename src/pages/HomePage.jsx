@@ -40,7 +40,9 @@ const HomePage = () => {
 
   return (
     <>
+    <div className='hidden md:block'>
       <CursorFollower />
+    </div>
 
       <div ref={containerRef} className="bg-[#050505] relative h-[700vh] text-white selection:bg-white selection:text-black">
         <Navbar />
