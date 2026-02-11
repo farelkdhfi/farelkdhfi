@@ -93,7 +93,7 @@ export const additionalProjects = [
         url: "https://task-flow-pink-omega.vercel.app/"
     },
     {
-        title: "Food and Recipe Recomendation",
+        title: "Recipe Recomendation",
         image: TasteAI,
         year: "2025",
         desc: "AI-powered culinary assistant (TASTE-AI) that provides personalized food and recipe recommendations using the Groq AI model.",
