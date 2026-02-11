@@ -89,7 +89,7 @@ const Scene = ({ data, index, scrollIndex, totalScenes }) => {
               style={{
                 y: yImageInner,
                 scale: scaleImage,
-                filter: isLastScene ? "grayscale(100%) contrast(1.2) brightness(0.8)" : "saturate(0.8) contrast(1.1)"
+                filter: "saturate(0.8) contrast(1.1)"
               }}
             />
             {/* Cinematic Overlays */}

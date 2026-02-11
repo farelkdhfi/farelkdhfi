@@ -1,6 +1,9 @@
 import profileImg from '../assets/backgorund/me.JPG';
-import screenCodeImg from '../assets/backgorund/screenCode.png';
-import darkCloudImg from '../assets/backgorund/darkcloud.png';
+import section2 from '../assets/backgorund/section2.jpg';
+import section3 from '../assets/backgorund/section3v2.jpeg';
+import section4 from '../assets/backgorund/section4.jpg';
+import section5 from '../assets/backgorund/section5.jpg';
+import section6 from '../assets/backgorund/section6.jpg';
 
 export const scenesData = [
   {
@@ -15,7 +18,7 @@ export const scenesData = [
     id: 2,
     title: "CORE SYSTEM",
     subtitle: "Tech Stack",
-    img: screenCodeImg,
+    img: section2,
     desc: "Precision engineering with React.js & JavaScript.\nAugmented by MediaPipe, TensorFlow, and Three.js.",
     position: "left"
   },
@@ -23,7 +26,7 @@ export const scenesData = [
     id: 3,
     title: "ODYSSEY",
     subtitle: "Experience",
-    img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop",
+    img: section3,
     desc: "Forging systems for Government Agencies (Bappelitbangda).\nProven in National Web Development Competitions.",
     position: "center"
   },
@@ -31,7 +34,7 @@ export const scenesData = [
     id: 4,
     title: "MAGNUM OPUS",
     subtitle: "Selected Works",
-    img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1965&auto=format&fit=crop",
+    img: section4,
     desc: "SKIN-AI • MAGESSA • HANDROBOT 3D.\nExperimental labs meeting practical solutions.",
     position: "right-top"
   },
@@ -39,7 +42,7 @@ export const scenesData = [
     id: 5,
     title: "NEXUS POINT",
     subtitle: "Contact",
-    img: darkCloudImg,
+    img: section5,
     desc: "Initiate collaboration.\nfarelkadhafi34@gmail.com",
     position: "left-bottom"
   },
@@ -47,7 +50,7 @@ export const scenesData = [
     id: 6,
     title: "THE BLUEPRINT",
     subtitle: "Portfolio Details",
-    img: "https://images.unsplash.com/photo-1492571350019-22de08371fd3?q=80&w=2053&auto=format&fit=crop", 
+    img: section6,
     desc: "Simulation complete. Accessing detailed specifications.\nWelcome to the reality below.",
     position: "center"
   }

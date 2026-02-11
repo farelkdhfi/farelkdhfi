@@ -1,9 +1,9 @@
 import { image } from 'framer-motion/client';
 import Tees from '../assets/projectsImg/Tees.png';
-import Fit from '../assets/projectsImg/fitCompetition.jpeg';
-import Magessa from '../assets/projectsImg/magessa.jpeg';
+import Fit from '../assets/projectsImg/fitCompetition.jpg';
+import Magessa from '../assets/projectsImg/magessa.png';
 import SkinAI from '../assets/projectsImg/skinAI.png';
-import HandVirtual from '../assets/projectsImg/handVirtual.jpeg';
+import HandVirtual from '../assets/projectsImg/handVirtual.jpg';
 import DesaKit from '../assets/projectsImg/desaKit.png';
 import TasteAI from '../assets/projectsImg/tasteAI.png';
 import JavascriptBooks from '../assets/projectsImg/javascriptBooks.png';
