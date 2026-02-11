@@ -1,4 +1,3 @@
-import { image } from 'framer-motion/client';
 import Tees from '../assets/projectsImg/Tees.png';
 import Fit from '../assets/projectsImg/fitCompetition.jpg';
 import Magessa from '../assets/projectsImg/magessa.png';
@@ -38,7 +37,6 @@ export const projectsData = [
         tech: ["React.js", "TensorFlow.js", "MediaPipe", "Python"],
         image: SkinAI,
         url: "https://skinai-two.vercel.app/",
-        metrics: { accuracy: "92%", classes: "3 Types", latency: "<200ms" }
     },
     {
         id: 2,
@@ -49,7 +47,6 @@ export const projectsData = [
         tech: ["React.js", "PostgreSQL", "Node.js & Express", "QR Code"],
         image: Magessa,
         url: "https://magessa.vercel.app//",
-        metrics: { roles: "5 Levels", users: "50+", efficiency: "+80%" }
     },
     {
         id: 3,
@@ -60,7 +57,6 @@ export const projectsData = [
         tech: ["React.js", "Leaflet Maps", "Chart.js", "API"],
         image: Fit,
         url: "https://tasikmalaya-smart-city.vercel.app/",
-        metrics: { rank: "Top 5", features: "12+", uptime: "99%" }
     },
     {
         id: 4,
@@ -71,7 +67,6 @@ export const projectsData = [
         tech: ["Three.js", "MediaPipe", "React-Three-Fiber", "WebGL"],
         image: HandVirtual,
         url: "https://hand-robot-virtual-3d.vercel.app/",
-        metrics: { fps: "60", latency: "15ms", joints: "12+" }
     }
 ];
 
