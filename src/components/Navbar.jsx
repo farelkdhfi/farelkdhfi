@@ -3,7 +3,7 @@ import {
   motion,
   AnimatePresence
 } from 'framer-motion';
-import { navItemsData } from "../data/navItemsData";
+import { navItemsData } from "../data/navItemsData"; 
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -112,7 +112,7 @@ const Navbar = () => {
               </motion.div>
             </div>
 
-            {/* Right Side: Image Preview Area */}
+            {/* Right Side: Gradient Preview Area */}
             <div className="hidden md:block w-1/2 h-full relative overflow-hidden bg-neutral-900 border-l border-white/5">
               <AnimatePresence mode="wait">
                 {hoveredIndex !== null && (
@@ -124,15 +124,13 @@ const Navbar = () => {
                     transition={{ duration: 0.6, ease: "circOut" }}
                     className="absolute inset-0"
                   >
-                    {/* The Image */}
-
-                    <img
-                      src={navItemsData[hoveredIndex].img}
-                      alt="Menu Preview"
-                      className="w-full h-full object-cover opacity-60"
+                    {/* The Gradient Background (Replaces <img>) */}
+                    <div 
+                        className="w-full h-full opacity-60"
+                        style={{ background: navItemsData[hoveredIndex].gradient }}
                     />
 
-                    {/* Overlay Gradient */}
+                    {/* Overlay Gradient (Keeping this to blend edges seamlessly) */}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/20" />
 
                     {/* Floating Label */}
