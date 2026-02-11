@@ -21,7 +21,7 @@ export const skillsData = [
     { name: "React.js", level: 90, category: "Frontend" },
     { name: "Node.js & Express", level: 70, category: "Backend" },
     { name: "Python", level: 60, category: "AI/ML" },
-    { name: "PostgreSQL & MongoDB", level: 60, category: "Database" },
+    { name: "PostgreSQL", level: 60, category: "Database" },
     { name: "Figma", level: 90, category: "Ui Design" },
     { name: "TypeScript", level: 90, category: "Language" },
     { name: "Three.js", level: 60, category: "3D Graphics" },
@@ -79,7 +79,7 @@ export const additionalProjects = [
     {
         title: "Photo Booth App",
         image: PhotoBooth,
-        year: "2023",
+        year: "2025",
         desc: "Interactive web-based photo booth application allowing users to capture moments with custom frames and filters directly from the browser.",
         tech: ["ReactJS (Vite)", "TailwindCSS", "Three.js"],
         url: "https://photo-booth-app-sigma.vercel.app/"
