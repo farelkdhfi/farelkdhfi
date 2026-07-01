@@ -36,7 +36,7 @@ export const projectsData = [
         desc: "Facial skin analysis web app integrating MobileNetV2 for classification and MediaPipe Tasks Vision for real-time detection.",
         tech: ["React.js", "TensorFlow.js", "MediaPipe", "Python"],
         image: SkinAI,
-        url: "https://skinai-two.vercel.app/",
+        url: "https://skinai.my.id",
     },
     {
         id: 2,
@@ -46,7 +46,7 @@ export const projectsData = [
         desc: "Mail management system featuring 5-level RBAC (Admin to Staff), digital disposition flow, and QR Code guestbook.",
         tech: ["React.js", "PostgreSQL", "Node.js & Express", "QR Code"],
         image: Magessa,
-        url: "https://magessa.vercel.app//",
+        url: "https://magessa.vercel.app/",
     },
     {
         id: 3,
