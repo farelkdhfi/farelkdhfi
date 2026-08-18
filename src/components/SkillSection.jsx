@@ -1,138 +1,213 @@
-import {
-    motion,
-    useInView,
-} from 'framer-motion';
-import { useRef, useState } from "react";
-import { skillsData } from "../data/personalData";
+import { motion, useInView } from 'framer-motion';
+import { useRef, useState } from 'react';
+import { skillsData } from '../data/personalData';
 
-const SkillRow = ({ data, index, isHovered, isAnyHovered, onHover, isInView }) => {
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: index * 0.05, duration: 0.4 }}
-            onMouseEnter={onHover}
-            // HAPUS: transition-all & blur-[3px] untuk meringankan beban render
-            // GANTI: transition-opacity dan sekadar menurunkan opacity menjadi 30%
-            className={`relative group cursor-pointer border-b border-white/5 py-6 md:py-10 transition-opacity duration-300 ease-out ${isAnyHovered && !isHovered ? 'opacity-30' : 'opacity-100'
-                }`}
-        >
-            <div className="flex items-baseline justify-between relative z-10">
-                <div className="flex items-baseline gap-3 md:gap-12">
-                    {/* Index Number */}
-                    <span className="font-mono text-[10px] md:text-xs text-neutral-600 w-6 md:w-8">
-                        {String(index + 1).padStart(2, '0')}
-                    </span>
+const SkillRow = ({
+  data,
+  index,
+  isHovered,
+  isAnyHovered,
+  onHover,
+  isInView,
+}) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={
+        isInView
+          ? {
+              opacity: 1,
+              y: 0,
+            }
+          : {}
+      }
+      transition={{
+        delay: Math.min(index * 0.035, 0.25),
+        duration: 0.35,
+        ease: 'easeOut',
+      }}
+      onMouseEnter={onHover}
+      className={`group relative cursor-pointer border-b border-white/5 py-6 md:py-10 transition-opacity duration-200 ${
+        isAnyHovered && !isHovered ? 'opacity-35' : 'opacity-100'
+      }`}
+      style={{
+        willChange: isInView ? 'opacity, transform' : 'auto',
+      }}
+    >
+      <div className="relative z-10 flex items-baseline justify-between">
+        {/* LEFT */}
+        <div className="flex items-baseline gap-3 md:gap-12">
+          <span className="w-6 font-mono text-[10px] text-neutral-600 md:w-8 md:text-xs">
+            {String(index + 1).padStart(2, '0')}
+          </span>
 
-                    {/* Skill Name */}
-                    <h3 className="text-base md:text-lg font-light tracking-tight text-white transition-transform duration-300 group-hover:translate-x-2 md:group-hover:translate-x-4">
-                        {data.name}
-                    </h3>
-                </div>
+          <h3
+            className={`text-base font-light tracking-tight text-white transition-transform duration-200 ease-out md:text-lg ${
+              isHovered
+                ? 'translate-x-1 md:translate-x-2'
+                : 'translate-x-0'
+            }`}
+          >
+            {data.name}
+          </h3>
+        </div>
 
-                {/* Right Side Info */}
-                <div className="flex flex-col items-end gap-1">
-                    <span className="text-[10px] md:text-xs font-mono uppercase tracking-wider text-neutral-500 group-hover:text-white transition-colors duration-300">
-                        {data.category}
-                    </span>
+        {/* RIGHT */}
+        <div className="flex flex-col items-end gap-1">
+          <span
+            className={`text-[10px] font-mono uppercase tracking-wider transition-colors duration-150 md:text-xs ${
+              isHovered ? 'text-white' : 'text-neutral-500'
+            }`}
+          >
+            {data.category}
+          </span>
 
-                    {/* Percentage (Only fully visible on hover) */}
-                    <div className="relative overflow-hidden h-8 md:h-12 flex items-center">
-                        <motion.span
-                            className="text-xl md:text-3xl font-light text-white tabular-nums block"
-                            initial={{ y: "100%" }}
-                            animate={{ y: isHovered ? "0%" : "100%" }}
-                            // Memperingan kalkulasi easing
-                            transition={{ duration: 0.3, ease: "easeOut" }}
-                        >
-                            {data.level}%
-                        </motion.span>
-                        {/* Default state dot when not hovered */}
-                        <motion.div
-                            animate={{ scale: isHovered ? 0 : 1, opacity: isHovered ? 0 : 1 }}
-                            transition={{ duration: 0.2 }}
-                            className="w-1.5 h-1.5 rounded-full bg-neutral-700 absolute right-0 top-1/2 -translate-y-1/2"
-                        />
-                    </div>
-                </div>
-            </div>
+          {/* LEVEL */}
+          <div className="relative flex h-8 items-center overflow-hidden md:h-12">
+            <motion.span
+              className="block text-xl font-light tabular-nums text-white md:text-3xl"
+              initial={false}
+              animate={{
+                y: isHovered ? '0%' : '100%',
+              }}
+              transition={{
+                duration: 0.22,
+                ease: 'easeOut',
+              }}
+              style={{
+                willChange: 'transform',
+              }}
+            >
+              {data.level}%
+            </motion.span>
 
-            {/* Progress Line Background */}
-            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-neutral-800 overflow-hidden">
-                {/* OPTIMASI KRUSIAL: Menggunakan scaleX dari origin-left (GPU Accelerated)
-                    daripada menggunakan width (Memaksa CPU Recalculate Layout)
-                */}
-                <motion.div
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: isHovered ? 1 : 0 }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                    className="h-full w-full bg-white opacity-50 origin-left"
-                />
-                {/* Secondary thinner line for precision feel */}
-                <motion.div
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: isHovered ? (data.level / 100) : 0 }}
-                    transition={{ duration: 0.5, delay: 0.05, ease: "easeOut" }}
-                    // Box-shadow dihapus karena sangat berat saat dikombinasikan dengan animasi panjang/lebar
-                    className="absolute top-0 left-0 h-full w-full bg-white origin-left"
-                />
-            </div>
-
-            {/* Hover Background Glow */}
-            <motion.div
-                className="absolute inset-0 -z-10 bg-gradient-to-r from-neutral-900/0 via-neutral-900/40 to-neutral-900/0"
-                // Hanya mainkan opacity, hapus animasi scaleX di sini karena layer terlalu besar
-                initial={{ opacity: 0 }}
-                animate={{ opacity: isHovered ? 1 : 0 }}
-                transition={{ duration: 0.3 }}
+            {/* Default dot */}
+            <span
+              className={`absolute right-0 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-neutral-700 transition-opacity duration-150 ${
+                isHovered ? 'opacity-0' : 'opacity-100'
+              }`}
             />
-        </motion.div>
-    );
+          </div>
+        </div>
+      </div>
+
+      {/* PROGRESS */}
+      <div className="absolute bottom-0 left-0 h-px w-full overflow-hidden bg-neutral-800">
+        <motion.div
+          className="h-full w-full origin-left bg-white/30"
+          initial={false}
+          animate={{
+            scaleX: isHovered ? 1 : 0,
+          }}
+          transition={{
+            duration: 0.3,
+            ease: 'easeOut',
+          }}
+          style={{
+            willChange: 'transform',
+          }}
+        />
+
+        <motion.div
+          className="absolute left-0 top-0 h-full w-full origin-left bg-white"
+          initial={false}
+          animate={{
+            scaleX: isHovered ? data.level / 100 : 0,
+          }}
+          transition={{
+            duration: 0.35,
+            ease: 'easeOut',
+          }}
+          style={{
+            willChange: 'transform',
+          }}
+        />
+      </div>
+
+      {/* Static hover background */}
+      <div
+        className={`pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-transparent via-neutral-900/30 to-transparent transition-opacity duration-150 ${
+          isHovered ? 'opacity-100' : 'opacity-0'
+        }`}
+      />
+    </motion.div>
+  );
 };
 
 const SkillsSection = () => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
-    const [hoveredSkill, setHoveredSkill] = useState(null);
+  const ref = useRef(null);
 
-    return (
-        <section ref={ref} className="min-h-screen bg-[#050505] py-20 px-4 md:py-32 md:px-8 relative overflow-hidden flex flex-col justify-center">
-            <div className="max-w-7xl mx-auto relative z-10 w-full">
-                {/* Section Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="mb-12 md:mb-24 max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-8 border-b border-white/10 pb-8 md:pb-12"
-                >
-                    <div>
-                        <span className="text-xs font-mono text-neutral-500 mb-4 block tracking-widest uppercase">
-                            // 02 — Competencies
-                        </span>
-                        <h2 className="text-4xl sm:text-5xl md:text-7xl font-light tracking-tighter text-white">
-                            Technical<br />
-                            <span className="text-neutral-600">Proficiency.</span>
-                        </h2>
-                    </div>
-                    <p className="text-neutral-500 max-w-sm text-sm leading-relaxed mb-2">
-                        A curated list of technologies and tools used to engineer scalable digital solutions.
-                    </p>
-                </motion.div>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-2 md:gap-5 px-0 md:px-16" onMouseLeave={() => setHoveredSkill(null)}>
-                    {skillsData.map((skill, i) => (
-                        <SkillRow
-                            key={skill.name}
-                            data={skill}
-                            index={i}
-                            isHovered={hoveredSkill === i}
-                            isAnyHovered={hoveredSkill !== null}
-                            onHover={() => setHoveredSkill(i)}
-                            isInView={isInView}
-                        />
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
+  const isInView = useInView(ref, {
+    once: true,
+    margin: '-80px',
+  });
+
+  const [hoveredSkill, setHoveredSkill] = useState(null);
+
+  return (
+    <section
+      ref={ref}
+      className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-[#050505] px-4 py-20 md:px-8 md:py-32"
+    >
+      <div className="relative z-10 mx-auto w-full max-w-7xl">
+        {/* HEADER */}
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 16,
+          }}
+          animate={
+            isInView
+              ? {
+                  opacity: 1,
+                  y: 0,
+                }
+              : {}
+          }
+          transition={{
+            duration: 0.45,
+            ease: 'easeOut',
+          }}
+          className="mx-auto mb-12 flex max-w-6xl flex-col items-start justify-between gap-6 border-b border-white/10 pb-8 md:mb-24 md:flex-row md:items-end md:gap-8 md:pb-12"
+        >
+          <div>
+            <span className="mb-4 block font-mono text-xs uppercase tracking-widest text-neutral-500">
+              // 02 — Competencies
+            </span>
+
+            <h2 className="text-4xl font-light tracking-tighter text-white sm:text-5xl md:text-7xl">
+              Technical
+              <br />
+              <span className="text-neutral-600">Proficiency.</span>
+            </h2>
+          </div>
+
+          <p className="mb-2 max-w-sm text-sm leading-relaxed text-neutral-500">
+            A curated list of technologies and tools used to engineer scalable
+            digital solutions.
+          </p>
+        </motion.div>
+
+        {/* SKILLS */}
+        <div
+          className="grid grid-cols-1 gap-x-12 gap-y-2 px-0 md:grid-cols-2 md:gap-5 md:px-16"
+          onMouseLeave={() => setHoveredSkill(null)}
+        >
+          {skillsData.map((skill, i) => (
+            <SkillRow
+              key={skill.name}
+              data={skill}
+              index={i}
+              isHovered={hoveredSkill === i}
+              isAnyHovered={hoveredSkill !== null}
+              onHover={() => setHoveredSkill(i)}
+              isInView={isInView}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
+
 export default SkillsSection;
