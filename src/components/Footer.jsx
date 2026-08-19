@@ -1,101 +1,356 @@
-import { motion } from 'framer-motion';
-import { socialMediaLinks } from "../data/socialMedia";
+import { ArrowUpRight } from 'lucide-react';
+import { socialMediaLinks } from '../data/personalData';
+import me from '../assets/me.jpg';
 
 const Footer = () => {
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
+  return (
+    <footer
+      id="contact"
+      className="
+        relative
+        overflow-hidden
+        bg-neutral-950
+        px-5
+        pb-5
+        pt-20
+        text-white
+        sm:px-8
+        sm:pb-6
+        sm:pt-28
+        lg:px-10
+        lg:pt-32
+      "
+    >
+      {/* Ambient light */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          right-[-10%]
+          top-[12%]
+          h-64
+          w-64
+          rounded-full
+          bg-blue-400/[0.05]
+          blur-[100px]
+          sm:right-[8%]
+          sm:top-[18%]
+          sm:h-72
+          sm:w-72
+          sm:blur-[120px]
+        "
+      />
 
-    return (
-        // UPDATE: px-6 (mobile) -> md:px-16 (desktop). Padding atas/bawah disesuaikan sedikit.
-        <footer className="bg-[#050505] pt-16 pb-8 px-6 md:pt-20 md:pb-10 md:px-16 border-t border-white/10 relative overflow-hidden">
-            <div className="max-w-7xl mx-auto relative z-10">
+      <div className="relative mx-auto max-w-7xl">
+        {/* ================= MAIN CONTACT ================= */}
+        <div
+          className="
+            grid
+            gap-12
+            lg:grid-cols-[1fr_280px_0.4fr]
+            lg:gap-16
+          "
+        >
+          {/* ================= HEADING ================= */}
+          <div className="order-1">
+            <p
+              className="
+                text-[9px]
+                font-medium
+                uppercase
+                tracking-[0.18em]
+                text-neutral-600
+                sm:text-[10px]
+                sm:tracking-[0.2em]
+              "
+            >
+              05 — Contact
+            </p>
 
-                {/* Top Section: Navigation & Actions */}
-                {/* UPDATE: grid-cols-2 (mobile) -> grid-cols-4 (desktop).
-                    Ini agar link Explore & Connect bersebelahan di HP, tidak menumpuk panjang ke bawah. */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12 md:gap-12 mb-16 md:mb-20">
+            <h2
+              className="
+                mt-5
+                max-w-4xl
+                text-[clamp(2.9rem,12vw,5rem)]
+                font-medium
+                leading-[0.9]
+                tracking-[-0.065em]
+                sm:mt-6
+                sm:text-[clamp(4.2rem,8vw,7rem)]
+                sm:leading-[0.88]
+                sm:tracking-[-0.075em]
+                lg:text-[clamp(5rem,8vw,8rem)]
+              "
+            >
+              Let’s build
+              <br />
+              <span className="text-neutral-600">
+                something good.
+              </span>
+            </h2>
+          </div>
 
-                    {/* Column 1: Brand Identity */}
-                    {/* UPDATE: col-span-2 di mobile & desktop (Full width di mobile row 1) */}
-                    <div className="col-span-2">
-                        <a href="#" onClick={scrollToTop} className="text-2xl font-bold tracking-tighter text-white mb-6 block w-fit">
-                            SFMK<span className="text-neutral-600">.</span>
-                        </a>
-                        <p className="text-neutral-500 text-sm leading-relaxed max-w-xs mb-8">
-                            Crafting scalable digital ecosystems with precision engineering and aesthetic intelligence.
-                        </p>
-                        <div className="flex items-center gap-2 text-xs text-neutral-600 font-mono border border-white/10 w-fit px-3 py-1 rounded-full">
-                            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                            <span>Systems Normal</span>
-                        </div>
-                    </div>
+          {/* ================= PORTRAIT ================= */}
+          <div
+            className="
+              order-2
+              flex
+              items-end
+              lg:justify-center
+            "
+          >
+            <div
+              className="
+                relative
+                w-full
+                max-w-[190px]
+                sm:max-w-[220px]
+                lg:max-w-[250px]
+              "
+            >
+              {/* Ambient glow */}
+              <div
+                className="
+                  pointer-events-none
+                  absolute
+                  -inset-6
+                  rounded-full
+                  bg-pink-400/[0.035]
+                  blur-[60px]
+                  sm:-inset-8
+                  sm:blur-[70px]
+                "
+              />
 
-                    {/* Column 2: Quick Links */}
-                    {/* UPDATE: col-span-1 (mobile & desktop) */}
-                    <div className="col-span-1">
-                        <h4 className="text-white font-medium mb-4 md:mb-6">Explore</h4>
-                        <ul className="space-y-3 md:space-y-4">
-                            {['About', 'Skills', 'Projects', 'Experience', 'Contact'].map((item) => (
-                                <li key={item}>
-                                    <a href={`#${item.toLowerCase()}`} className="text-neutral-500 hover:text-white transition-colors text-sm">
-                                        {item}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+              {/* Image */}
+              <div
+                className="
+                  relative
+                  aspect-[4/5]
+                  overflow-hidden
+                  rounded-[1.4rem]
+                  border
+                  border-white/[0.08]
+                  bg-neutral-900
+                  sm:rounded-[1.75rem]
+                "
+              >
+                <img
+                  src={me}
+                  alt="Setia Farel Muamar Kadhafi"
+                  loading="lazy"
+                  decoding="async"
+                  className="
+                    h-full
+                    w-full
+                    object-cover
+                    object-center
+                    grayscale-[15%]
+                    opacity-90
+                    transition-all
+                    duration-700
+                    hover:scale-[1.02]
+                    hover:opacity-100
+                  "
+                />
 
-                    {/* Column 3: Legal & Social */}
-                    {/* UPDATE: col-span-1 (mobile & desktop) */}
-                    <div className="col-span-1">
-                        <h4 className="text-white font-medium mb-4 md:mb-6">Connect</h4>
-                        <ul className="space-y-3 md:space-y-4">
-                            {socialMediaLinks.map((item) => (
-                                <li key={item.name}>
-                                    <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-white transition-colors text-sm">
-                                        {item.name}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
+                {/* Bottom gradient */}
+                <div
+                  className="
+                    pointer-events-none
+                    absolute
+                    inset-0
+                    bg-gradient-to-t
+                    from-black/40
+                    via-transparent
+                    to-transparent
+                  "
+                />
+              </div>
 
-                {/* Middle Section: Big Signature */}
-                <div className="relative border-t border-white/10 pt-12 mb-16 md:mb-20">
-                    {/* UPDATE: text-[13vw] (mobile) -> text-[7vw] (desktop) agar tulisan tetap besar di HP */}
-                    <h1 className="text-[13vw] md:text-[7vw] uppercase leading-none tracking-tighter mx-auto text-white/5 select-none text-center font-bold md:font-normal">
-                        Life Long Learner
-                    </h1>
+              {/* Caption */}
+              <div className="mt-2.5 flex items-center justify-between sm:mt-3">
+                <span
+                  className="
+                    text-[8px]
+                    uppercase
+                    tracking-[0.16em]
+                    text-neutral-600
+                    sm:text-[9px]
+                    sm:tracking-[0.18em]
+                  "
+                >
+                  Setia Farel
+                </span>
 
-                    {/* Floating Back To Top Button */}
-                    <motion.button
-                        whileHover={{ y: -5 }}
-                        onClick={scrollToTop}
-                        // UPDATE: Ukuran button disesuaikan w-12 (mobile) -> w-16 (desktop)
-                        className="absolute right-0 top-0 -mt-6 md:-mt-8 bg-neutral-900 border border-white/10 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full text-white hover:bg-white hover:text-black transition-all duration-300 z-20 group"
-                    >
-                        <span className="text-lg md:text-xl group-hover:-translate-y-1 transition-transform">↑</span>
-                    </motion.button>
-                </div>
-
-                {/* Bottom Section: Copyright & Meta */}
-                {/* UPDATE: gap-6 (mobile stack) -> gap-6 (desktop row). Text center di mobile. */}
-                <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] md:text-xs text-neutral-600 font-mono uppercase tracking-wider text-center md:text-left">
-                    <p>© 2026 Setia Farel MK. All Rights Reserved.</p>
-
-                    <div className="flex gap-6 md:gap-8">
-                        <span className="hover:text-white cursor-pointer transition-colors">Privacy Policy</span>
-                        <span className="hover:text-white cursor-pointer transition-colors">Terms of Use</span>
-                    </div>
-
-                    <p className="text-neutral-700">
-                        v2.5.0 — West Java, ID
-                    </p>
-                </div>
+                <span
+                  className="
+                    text-[8px]
+                    uppercase
+                    tracking-[0.16em]
+                    text-neutral-700
+                    sm:text-[9px]
+                    sm:tracking-[0.18em]
+                  "
+                >
+                  2026
+                </span>
+              </div>
             </div>
-        </footer>
-    );
+          </div>
+
+          {/* ================= CONTACT INFO ================= */}
+          <div
+            className="
+              order-3
+              lg:pt-12
+            "
+          >
+            <p
+              className="
+                max-w-sm
+                text-[12px]
+                leading-5
+                text-neutral-500
+                sm:text-sm
+                sm:leading-7
+              "
+            >
+              Open to frontend engineering opportunities, collaborative
+              projects, and interesting digital products.
+            </p>
+
+            <a
+              href="mailto:farelkadhafi34@gmail.com"
+              className="
+                group
+                mt-6
+                inline-flex
+                items-center
+                gap-2
+                border-b
+                border-white/20
+                pb-1.5
+                text-[11px]
+                text-white
+                transition-colors
+                hover:border-white
+                sm:mt-8
+                sm:pb-2
+                sm:text-sm
+              "
+            >
+              <span className="break-all sm:break-normal">
+                farelkadhafi34@gmail.com
+              </span>
+
+              <ArrowUpRight
+                size={13}
+                strokeWidth={1.5}
+                className="
+                  shrink-0
+                  transition-transform
+                  group-hover:translate-x-0.5
+                  group-hover:-translate-y-0.5
+                  sm:h-[14px]
+                  sm:w-[14px]
+                "
+              />
+            </a>
+          </div>
+        </div>
+
+        {/* ================= BOTTOM ================= */}
+        <div
+          className="
+            mt-20
+            border-t
+            border-white/[0.08]
+            pt-5
+            sm:mt-32
+            sm:pt-6
+            lg:mt-40
+          "
+        >
+          <div
+            className="
+              flex
+              flex-col
+              gap-5
+              sm:flex-row
+              sm:items-center
+              sm:justify-between
+              sm:gap-6
+            "
+          >
+            {/* Copyright */}
+            <p
+              className="
+                text-[8px]
+                uppercase
+                tracking-[0.13em]
+                text-neutral-600
+                sm:text-[10px]
+                sm:tracking-[0.15em]
+              "
+            >
+              © 2026 Setia Farel Muamar Kadhafi
+            </p>
+
+            {/* Social */}
+            <div
+              className="
+                flex
+                flex-wrap
+                gap-x-5
+                gap-y-2
+                sm:gap-6
+              "
+            >
+              {socialMediaLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="
+                    text-[8px]
+                    uppercase
+                    tracking-[0.13em]
+                    text-neutral-500
+                    transition-colors
+                    hover:text-white
+                    sm:text-[10px]
+                    sm:tracking-[0.15em]
+                  "
+                >
+                  {social.name}
+                </a>
+              ))}
+            </div>
+
+            {/* Back to top */}
+            <a
+              href="#"
+              className="
+                w-fit
+                text-[8px]
+                uppercase
+                tracking-[0.13em]
+                text-neutral-600
+                transition-colors
+                hover:text-white
+                sm:text-[10px]
+                sm:tracking-[0.15em]
+              "
+            >
+              Back to top
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 };
+
 export default Footer;
