@@ -1,6 +1,6 @@
 import { ArrowUpRight } from 'lucide-react';
 import { socialMediaLinks } from '../data/personalData';
-import me from '../assets/me.jpg';
+import me from '../assets/me2.jpg';
 
 const Footer = () => {
   return (
@@ -126,13 +126,9 @@ const Footer = () => {
               <div
                 className="
                   relative
-                  aspect-[4/5]
+                  aspect-square
                   overflow-hidden
-                  rounded-[1.4rem]
-                  border
-                  border-white/[0.08]
-                  bg-neutral-900
-                  sm:rounded-[1.75rem]
+                  rounded-full
                 "
               >
                 <img
@@ -151,6 +147,7 @@ const Footer = () => {
                     duration-700
                     hover:scale-[1.02]
                     hover:opacity-100
+                    rounded-full
                   "
                 />
 

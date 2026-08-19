@@ -1,5 +1,4 @@
 import Tees from '../assets/projectsImg/Tees.png';
-import Fit from '../assets/projectsImg/tasik.png';
 import Magessa from '../assets/projectsImg/magessa.png';
 import SkinAI from '../assets/projectsImg/skinAI.png';
 import HandVirtual from '../assets/projectsImg/handVirtualRobot.png';
@@ -11,6 +10,7 @@ import NeoBooth from '../assets/projectsImg/neobooth.png';
 import Notetily from '../assets/projectsImg/notetily.png';
 import Duora from '../assets/projectsImg/duora.png';
 import LampiranCepat from '../assets/projectsImg/lampiranCepatAI.png';
+import HakimAI from '../assets/projectsImg/hakimAI.png';
 
 export const personalData = [
   { label: 'System Status', value: 'Online', color: 'text-emerald-500' },
@@ -108,11 +108,19 @@ export const projectsData = [
     desc: 'AI-powered document processing application designed to simplify the preparation and management of administrative attachments.',
     tech: ['React.js', 'AI', 'Python', 'TailwindCSS'],
     image: LampiranCepat,
-    url: 'https://lampirancepat.vercel.app/',
+    url: 'https://lampiran-cepat-ai.vercel.app/',
   },
 ];
 
 export const additionalProjects = [
+  {
+    title: 'HakimAI',
+    image: HakimAI,
+    year: '2026',
+    desc: 'AI-powered legal debate assistant designed to analyze arguments, identify perspectives, and provide neutral insights during discussions.',
+    tech: ['Next.js', 'TypeScript', 'Groq AI', 'OpenRouter'],
+    url: '#',
+  },
   {
     title: 'Photo Booth App',
     image: NeoBooth,
