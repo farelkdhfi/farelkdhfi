@@ -3,13 +3,14 @@ import { skillsData } from '../data/personalData';
 const About = () => {
   const categories = [
     'Frontend',
-    'Backend',
-    'AI/ML',
-    'Database',
-    'UI Design',
     'Language',
+    'Backend',
+    'Backend & Database',
+    'Database',
+    'AI/ML',
     '3D Graphics',
-    'Architecture',
+    'Tools',
+    'UI Design',
   ];
 
   return (
@@ -61,8 +62,9 @@ const About = () => {
                   sm:leading-7
                 "
               >
-                I care about the details that make digital products feel
-                intuitive, intentional, and enjoyable to use.
+                I build thoughtful digital products with a strong focus on
+                frontend development, interaction, and practical user
+                experiences.
               </p>
             </div>
           </div>
@@ -86,7 +88,7 @@ const About = () => {
               I’m a frontend-focused developer who enjoys turning complex
               ideas into{' '}
               <span className="text-neutral-400">
-                simple digital experiences.
+                useful digital products.
               </span>
             </h2>
 
@@ -105,6 +107,7 @@ const About = () => {
                 sm:pt-8
               "
             >
+              {/* Focus */}
               <div>
                 <p
                   className="
@@ -130,11 +133,12 @@ const About = () => {
                     sm:leading-6
                   "
                 >
-                  Frontend development, UI systems, interactive experiences,
-                  and modern web architecture.
+                  Frontend engineering, React and Next.js applications,
+                  interactive interfaces, and modern web architecture.
                 </p>
               </div>
 
+              {/* Currently */}
               <div>
                 <p
                   className="
@@ -160,8 +164,9 @@ const About = () => {
                     sm:leading-6
                   "
                 >
-                  Building with React, TypeScript, Tailwind CSS, Node.js,
-                  Python, and exploring AI-powered interfaces.
+                  Building with React, Next.js, TypeScript, Supabase, and
+                  modern data-fetching tools while exploring AI-powered and
+                  computer vision experiences.
                 </p>
               </div>
             </div>
@@ -215,7 +220,7 @@ const About = () => {
                 sm:tracking-[0.15em]
               "
             >
-              08 disciplines
+              {skillsData.length} skills
             </p>
           </div>
 
@@ -234,6 +239,8 @@ const About = () => {
               const skill = skillsData.find(
                 (item) => item.category === category
               );
+
+              if (!skill) return null;
 
               return (
                 <div
@@ -275,7 +282,7 @@ const About = () => {
                         sm:tracking-[0.12em]
                       "
                     >
-                      {skill?.level}%
+                      {skill.level}%
                     </span>
                   </div>
 
@@ -291,7 +298,7 @@ const About = () => {
                       sm:text-lg
                     "
                   >
-                    {skill?.name}
+                    {skill.name}
                   </h3>
 
                   {/* Progress */}
@@ -312,7 +319,7 @@ const About = () => {
                         duration-1000
                       "
                       style={{
-                        width: `${skill?.level}%`,
+                        width: `${skill.level}%`,
                       }}
                     />
                   </div>

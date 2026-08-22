@@ -1,4 +1,7 @@
-import { experiencesData } from '../data/personalData';
+import {
+  experiencesData,
+  awardsData,
+} from '../data/personalData';
 
 const Experience = () => {
   return (
@@ -15,6 +18,10 @@ const Experience = () => {
       "
     >
       <div className="mx-auto max-w-7xl">
+        {/* =====================================================
+            EXPERIENCE
+        ====================================================== */}
+
         {/* Section Header */}
         <div
           className="
@@ -24,19 +31,40 @@ const Experience = () => {
             sm:pt-8
           "
         >
-          <p
+          <div
             className="
-              text-[9px]
-              font-medium
-              uppercase
-              tracking-[0.18em]
-              text-neutral-400
-              sm:text-[10px]
-              sm:tracking-[0.2em]
+              flex
+              items-center
+              justify-between
+              gap-4
             "
           >
-            04 — Experience
-          </p>
+            <p
+              className="
+                text-[9px]
+                font-medium
+                uppercase
+                tracking-[0.18em]
+                text-neutral-400
+                sm:text-[10px]
+                sm:tracking-[0.2em]
+              "
+            >
+              04 — Experience
+            </p>
+
+            <span
+              className="
+                text-[8px]
+                uppercase
+                tracking-[0.14em]
+                text-neutral-400
+                sm:text-[9px]
+              "
+            >
+              Professional
+            </span>
+          </div>
         </div>
 
         {/* Experience List */}
@@ -48,7 +76,7 @@ const Experience = () => {
         >
           {experiencesData.map((experience) => (
             <article
-              key={experience.role}
+              key={`${experience.company}-${experience.role}`}
               className="
                 grid
                 gap-6
@@ -60,7 +88,7 @@ const Experience = () => {
                 sm:py-12
               "
             >
-              {/* Mobile Meta */}
+              {/* Mobile / Date */}
               <div
                 className="
                   flex
@@ -174,6 +202,152 @@ const Experience = () => {
               </div>
             </article>
           ))}
+        </div>
+
+        {/* =====================================================
+            AWARDS & RECOGNITION
+        ====================================================== */}
+
+        <div
+          className="
+            mt-20
+            border-t
+            border-black/[0.08]
+            pt-7
+            sm:mt-28
+            sm:pt-8
+          "
+        >
+          {/* Awards Header */}
+          <div
+            className="
+              flex
+              items-center
+              justify-between
+              gap-4
+            "
+          >
+            <p
+              className="
+                text-[9px]
+                font-medium
+                uppercase
+                tracking-[0.18em]
+                text-neutral-400
+                sm:text-[10px]
+                sm:tracking-[0.2em]
+              "
+            >
+              Recognition
+            </p>
+
+            <span
+              className="
+                text-[8px]
+                uppercase
+                tracking-[0.14em]
+                text-neutral-400
+                sm:text-[9px]
+              "
+            >
+              Awards & Honors
+            </span>
+          </div>
+
+          {/* Awards List */}
+          <div
+            className="
+              mt-10
+              sm:mt-12
+            "
+          >
+            {awardsData.map((award) => (
+              <article
+                key={`${award.event}-${award.title}`}
+                className="
+                  grid
+                  gap-6
+                  border-t
+                  border-black/[0.08]
+                  py-8
+                  sm:grid-cols-[120px_1fr_180px]
+                  sm:gap-10
+                  sm:py-12
+                "
+              >
+                {/* Date */}
+                <div>
+                  <span
+                    className="
+                      text-[8px]
+                      uppercase
+                      tracking-[0.12em]
+                      text-neutral-400
+                      sm:text-[10px]
+                    "
+                  >
+                    {award.year}
+                  </span>
+                </div>
+
+                {/* Main Content */}
+                <div>
+                  <h3
+                    className="
+                      text-lg
+                      font-medium
+                      tracking-[-0.04em]
+                      text-neutral-950
+                      sm:text-2xl
+                    "
+                  >
+                    {award.title}
+                  </h3>
+
+                  <p
+                    className="
+                      mt-1
+                      text-[11px]
+                      text-neutral-400
+                      sm:text-xs
+                    "
+                  >
+                    {award.event}
+                  </p>
+
+                  <p
+                    className="
+                      mt-5
+                      max-w-2xl
+                      text-[12px]
+                      leading-5
+                      text-neutral-500
+                      sm:mt-6
+                      sm:text-[13px]
+                      sm:leading-6
+                    "
+                  >
+                    {award.desc}
+                  </p>
+                </div>
+
+                {/* Desktop Location */}
+                <div className="hidden sm:block sm:text-right">
+                  <span
+                    className="
+                      text-[9px]
+                      uppercase
+                      leading-5
+                      tracking-[0.15em]
+                      text-neutral-400
+                    "
+                  >
+                    {award.location}
+                  </span>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -2,7 +2,13 @@
 
 @import "tailwindcss";
 
-:root {
+html {
+  scroll-behavior: smooth;
+}
+
+
+
+/* :root {
   font-family: 'DM Sans', sans-serif;
   color: #171717;
   background: #f5f5f2;
@@ -43,4 +49,4 @@ a {
 button,
 a {
   -webkit-tap-highlight-color: transparent;
-}
+} */
